@@ -6,3 +6,5 @@
  bracelet rouge 
 - gps : latitude longitude, adresses de trucs , markers
 - music : 
+- 7 mers
+- lost frequencies radio
