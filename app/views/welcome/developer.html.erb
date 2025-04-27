@@ -1,0 +1,41 @@
+<%@text=["title","name"]%>
+<p>que voulez vous developer</p>
+<label>option 1</label>
+<input type=radio value=1 onclick="modifieroption()" name=quoi id=quoi1/>
+<label>option 2</label>
+<input type=radio value=2 onclick="modifieroption()" name=quoi id=quoi2/>
+
+<h2>voir tous les  </h2>
+<h2>voir 1 r</h2>
+<label>name</label>
+<input type=checkbox value=1 onclick="modifiercode()" name=name id=name/>
+<br>
+<label>last name</label>
+<input type=checkbox value=1 onclick="modifiercode()" name=lastname id=lastname/>
+<br>
+
+
+<textarea id=codehtml> </textarea>
+<button onclick="voircode()" id=submit1>tester code </button>
+<div id=div1>
+</div>
+<script>
+function modifieroption(){
+}
+function modifiercode(){
+var code="<div id=\"billet\"";
+if (name.checked === true){
+
+code+="<div>nom passager</div>"
+}
+if (lastname.checked === true){
+
+code+="<div>nom de famille passager</div>"
+}
+code+="</div>"
+}
+function voircode(){
+div1.innerHTML=codehtml.value
+}
+
+</script>

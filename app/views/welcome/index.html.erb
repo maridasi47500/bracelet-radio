@@ -1,0 +1,10 @@
+<h1>brecelet radio</h1>
+<p>chercher un lieu pour trouver une radio</p>
+<%=form_with "/welcome/search" do%>
+<div>
+<%=text_field_tag :place%>
+</div>
+<div>
+<%=submit_tag :envoyer%>
+</div>
+<%end%>
