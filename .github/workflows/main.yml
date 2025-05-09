@@ -1,0 +1,44 @@
+name: Rails Scaffold Workflow
+
+on:
+  workflow_dispatch: # Allows manual triggering of the workflow
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  rails-scaffold:
+    name: Generate Rails Scaffolds
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: postgres:latest
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: development
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Generate Rails scaffolds
+        run: |
+          bin/rails generate scaffold Physician name:string
+          bin/rails generate scaffold Patient name:string
+          bin/rails generate scaffold Appointment physician:references patient:references appointment_date:datetime
+          bin/rails db:migrate
+
+      - name: Run tests (optional)
+        env:
+          RAILS_ENV: test
+        run: |
+          git add .
+          git commit -m "Add GitHub Actions workflow for Rails scaffolds"
+          git push origin main
