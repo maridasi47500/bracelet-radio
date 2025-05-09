@@ -30,10 +30,10 @@ jobs:
 
       - name: Generate Rails scaffolds
         run: |
-          rails generate scaffold Physician name:string
-          rails generate scaffold Patient name:string
-          rails generate scaffold Appointment physician:references patient:references appointment_date:datetime
-          rails db:migrate
+          sudo bin/rails generate scaffold Physician name:string
+          sudo bin/rails generate scaffold Patient name:string
+          sudo bin/rails generate scaffold Appointment physician:references patient:references appointment_date:datetime
+          sudo bin/rails db:migrate
 
       - name: Run tests (optional)
         env:
